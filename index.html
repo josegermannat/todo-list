@@ -37,7 +37,14 @@
             </div>
        
 
+
+
+
+
+
+
           <div id="page" class="container___page">
+            <div id="overlay"></div>
             <div class="contaiener___nav">
                 <button type="button" class="menu"> <i class="fa-solid fa-bars"></i></i></button>
             </div>
@@ -86,17 +93,32 @@
                 </div>
              </div>
           
+
+             
+
               <div class="wrapper___list">
                             <div class="list___title">
                                <h1 id="text-cantidad-tareas">You have 0 task today</h1>
                             </div>
                           <div class="container___list-item">
-                            <div  class="form-for-list-item">
+                            <div  class="form___add-task">
+                               <div class="form-items-inital">
                                 <label for="tarea">Crea tu tarea</label>
-                                      <input id="tarea" type="text" placeholder="Escribe la tarea">
-                                      <button type="button" class = "button-añadir"  id="add">Añadir tarea</button>
+                                <button id="cancel" class="button-cerrar"><i class="bi bi-x"></i></button>
+                               </div>
+                               <div class="form-items-mid">
+                                <input id="tarea" type="text" placeholder="Escribe la tarea">
+                               </div>
+                               <div class="form-items-end">
+                                <button type="button" class = "button-añadir"  id="add">Añadir tarea</button>
+                               </div>
                             </div>
                             <p id="p-no-task" class="text___No tasks">No hay tareas agregadas....Agrega tu primera tarea</p>
+                            <ul class="list-task">
+                                   
+                               
+                            </ul>
+
                           </div>
               </div>
               <div class="wrapper___butons">
