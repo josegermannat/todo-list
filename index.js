@@ -75,6 +75,9 @@ function agregarTarea(textoTarea, lista) {
        if (lista.children.length === 0) {
         parrafoCuandoNoHayTareas.classList.remove("remove");
         actualizarTitleTareas(lista.children.length)
+    } else{
+        actualizarTitleTareas(lista.children.length)
+
     }
     })
     actualizarTitleTareas(lista.children.length)
