@@ -1,13 +1,8 @@
 
-html, body {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    
-      }
+
 
 .wrapper{
-    height: 100vh;
+     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -127,7 +122,7 @@ background: linear-gradient(to bottom, #fff, #EEF1FA);
 border: 1px solid transparent;
 border-radius: 20px;
 box-shadow: 0 0 30px #749DDE;
-padding: 15px 15px;
+padding: 15px;
 transition: all ease-in 0.3s;
 
 
@@ -620,19 +615,16 @@ align-self: flex-start;
     text-decoration: line-through;
     opacity: 0.7;
   }
-
   @media screen and (max-width: 768px) {
 
+    .wrapper{
+        min-height: 100vh;
+    }
     .container___init,
     .container___page {
-      width: 100%;
-      min-height: 100vh; /* Evita que el contenido se corte */
-      padding: 0.5rem;
+      width: 100%; /* Ajusta el ancho al 90% del viewport */
+      height: auto; /* Deja que la altura se ajuste automáticamente */
+      height: 100vh; /* Asegura que ocupe toda la pantalla vertical */
+      padding: 1rem;
       box-sizing: border-box;
-    overflow: hidden;
-    }
-  
-    .title {
-      font-size: 25px;
-    }
-  }
+    }   }
