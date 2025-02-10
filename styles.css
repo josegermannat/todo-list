@@ -1,0 +1,475 @@
+.wrapper{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Nunito Sans", serif;
+    background-color: #9AC1FA;
+}
+
+.container___init{
+    width: 40%;
+    height: 80%;
+    overflow: hidden;
+    display: flex;
+flex-direction: column;
+background-color: #fff;
+border: 1px solid transparent;
+border-radius: 20px;
+box-shadow: 0 0 30px #749DDE;
+padding: 15px 15px;
+
+}
+
+.init___title{
+width: 100%;
+height: 20%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.title{
+    font-size: 35px;
+    color: #749DDE;
+    font-weight: bold;
+    position: relative;
+    bottom: 20px;
+    text-shadow:0 0 15px #D3E2F6;
+}
+.init___image{
+    width: 100%;
+ height: 40%;
+}
+.image___presentecion{
+    width: 100%;
+    height: 100%;
+  object-fit:contain ;
+}
+
+.init___text{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text___container{
+    height: 90%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.init___button{
+    width: 100%;
+    height: 20%;
+   display: flex;
+   justify-content: center;
+   align-items: end;
+    
+   
+}
+
+.text___title{
+font-size: 35px;
+color: #000;
+display: block;
+padding: 10px 10px;
+}
+.text___p{
+    color: #A5A8AD;
+    font-size: 23px;
+    display: block;
+    padding: 15px;
+    text-align:center;
+}
+.button___button-start{
+width: 95%;
+height: 40%;
+outline: none;
+border:1px solid #94BBF6;
+background-color: #94BBF6;
+border-radius: 15px;
+font-size: 25px;
+color: #fff;
+font-weight: bold;
+box-shadow:0 0 20px #D3E2F6;
+transition: all ease-in-out 0.2s;
+cursor: pointer;
+position: relative;
+bottom: 20px;
+}
+.button___button-start:hover{
+    transform: scale(103%);
+}
+.container___page{
+    width: 40%;
+    height: 80%;
+    overflow: hidden;
+    display: flex;
+flex-direction: column;
+background: linear-gradient(to bottom, #fff, #EEF1FA);
+border: 1px solid transparent;
+border-radius: 20px;
+box-shadow: 0 0 30px #749DDE;
+padding: 15px 15px;
+transition: all ease-in 0.3s;
+
+
+}
+.remove{
+    display: none;
+}
+.contaiener___nav{
+width: 100%;
+height: 6%;
+margin-bottom: 10px;
+}
+
+.wrapper___mensaje{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  
+}
+.container___categorias{
+   
+    width: 100%;
+    height: 19%;
+    display: flex;
+    flex-direction: column;
+   
+}
+.wrapper___list{
+    width: 100%;
+    height: 49%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.wrapper___butons{
+    width: 110%;
+    height: 8%;
+    background-color: #fff;
+   margin: -15px;
+   
+}
+
+.menu{
+    width: 12%;
+    height: 70%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #F1F1F3;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    transition: all ease-in 0.1s;
+
+}
+.menu:hover{
+    transform: scale(105%);
+}
+
+.mensaje___container{
+    width: 100%;
+    height: 80%;
+    background-color: #96BDF9;
+    border:1px solid transparent ;
+    box-shadow: 0 0 40px #DDECFC;
+ border-radius: 34px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ overflow: hidden;
+ cursor: pointer;
+ 
+ transition: all ease-in 0.1s;
+}
+
+.mensaje___container:hover{
+    transform: scale(102%);
+}
+
+.icon-for-mesaje{
+    width: 50%;
+    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+
+
+.mensaje{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 10px 5px;
+}
+
+.mensaje > h1{
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: #94BBF6;
+    position: relative;
+    left: 10%;
+    text-align: start;
+}
+.arrow{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px
+
+}
+
+.container___document{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.arrow > img {
+    width: 100px;
+    height: auto;
+    position: relative;
+    top: 23px;
+  left: 10%;
+    transform: rotate(-20deg);
+    opacity: 0.6;
+}
+
+.container___document > svg {
+    width: 95px;
+    height: auto;
+  color: #fff;
+  position: relative;
+
+ 
+}
+
+.categorias___title{
+    height: 10%;
+    width: 100%;
+    padding: 10px;
+}
+.categorias___title > h1{
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    right: 10px ;
+}
+.cateogrias___container-items{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: end;
+
+}
+.items-categorias{
+    width: 25%;
+    height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   gap: 10px
+   ;
+}
+.items-categorias > button {
+    width:57%;
+    height: 70%;
+    background-color: #FFFDFE ;
+    border: 1px solid #ccc;   
+    border-radius: 15px;
+    font-size: 25px;
+    transition: all ease-in 0.1s;
+    cursor: pointer;
+   
+}
+.items-categorias > button:hover{
+    transform: scale(103%);
+}
+#work{
+    color: #BBE2FF;
+}
+#profile{
+ color: #EDBF9B;  
+}
+#cart-supermarket{
+    color:#A6D899 ;
+}
+#hearth{
+    color: #DC7495;
+}
+.list___title{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.list___title > h1{
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+.container___list-item{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+}
+.container___list-item > p{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    
+   
+}
+
+.container__butons{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+
+.flex-item-buton{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.butons-items{
+    width: 35%;
+    height: 60%;
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all ease-in 0.1s;
+}
+.butons-items > i{
+    font-size: 25px;
+    color: #DDDDE0;
+}
+
+.buton-principal{
+    width: 70%;
+    height: 100%;
+    display: flex;
+ justify-content: center;
+ align-items: center;
+    border: 1px solid transparent;
+border-radius: 30px;
+    background-color: #96C2FD;
+    
+}
+.buton-principal > i{
+    color: #fff;
+}
+
+.principal{
+    position: relative;
+    bottom: 30px;
+}
+.butons-items:hover{
+    transform: scale(105%);
+}
+
+
+.form-for-list-item{
+    width: 90%;
+    height: 50%;
+    z-index: 2;
+    border: #A5A8AD;
+    background-color: #fff;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    border-radius: 25px;
+    padding: 15px ;
+    gap: 20px;
+    box-shadow: 0 0 15px #96BDF9;
+    position: relative;
+ 
+     
+}
+
+.form-for-list-item > label{
+    font-size: 25px;
+font-weight: bold;
+align-self: flex-start;
+
+}
+#tarea{
+    width: 90%;
+    height: 20%;
+    outline: none;
+    border: 1px solid #96C2FD;
+    border-radius: 15px;
+    padding: 5px;
+    padding-left: 15px;
+    transition: all ease-in 0.2s;
+    color: #000;
+    font-size:18px ;
+    
+}
+
+#tarea::placeholder{
+    font-size: 18px;
+    color: #749DDE;
+}
+#tarea:hover{
+    transform: scale(103%);
+}
+.destruir{
+    display: none;
+}
+
+.button-añadir{
+    width: 65%;
+    height: 27%;
+    background-color: transparent;
+    border: 1px solid #749DDE;
+    border-radius: 12px;
+    color: #749DDE;
+    font-size: 18px;
+    transition: all ease-in-out 0.1s;
+    cursor: pointer;
+    align-self: center;
+}
+.button-añadir:hover{
+    color: #fff;
+    background-color: #749DDE;
+    transform: scale(104%);
+}
+
