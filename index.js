@@ -55,11 +55,23 @@ function agregarTarea(textoTarea, lista) {
     const buttonBorrarTarea = document.createElement("button")
     buttonBorrarTarea.textContent = "Borrar Tarea";
     buttonBorrarTarea.classList.add("button-borrar-tarea")
-
+     
+    const div = document.createElement("div");
+    const div2= document.createElement("div");
+    const div3 = document.createElement("div");
     
-    li.appendChild(div1);
-    li.appendChild(textTarea);
-    li.appendChild(buttonBorrarTarea)
+    div.appendChild(div1);
+    div2.appendChild(textTarea);
+    div3.appendChild(buttonBorrarTarea)
+
+
+    div.classList.add("task___containers")
+    div2.classList.add("task___containers")
+    div3.classList.add("task___containers")
+
+    li.appendChild(div)
+    li.appendChild(div2)
+    li.appendChild(div3)
 
     lista.appendChild(li);
 
