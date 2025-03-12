@@ -424,7 +424,9 @@ border-radius: 30px;
     transition: all 0.5s ease-in-out;
 }
 
-.container___forms {
+
+
+.container___login{
     width: 40%;
     height: 80%;
     overflow: hidden;
@@ -437,106 +439,190 @@ border-radius: 30px;
     padding: 15px 15px;
 }
 
-.forms___login{
-    height: 100%;
-    width: 100%;
-    padding: 5px 5px;
+.container___register{
+    width: 40%;
+    height: 80%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #749DDE;
+    padding: 15px 15px;
 }
 
- .form___title{
+.register___title{
     width: 100%;
-    height: 24%;
-    display: flex;
-    justify-content: center;
-    align-items: end;
- }
-
- .form___title > h1{
-    font-size: 35px;
-    color: #749DDE;
-    font-weight: bold;
-    position: relative;
-    bottom: 20px;
-    text-shadow: 0 0 15px #D3E2F6;
-    position: relative;
-    top: 25px;
- }
-
- .form___inputs{
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       flex-direction: column;
-       width: 100%;
-       height: 40%;
-       gap: 10%;
- }
-
-
-  .form___inputs > input{
-        width: 85%;  
-        height: 35px;
-        padding: 5px;
-        padding-left: 10px;
-        border: 1px solid #5f6061;
-        border-radius: 10px;
-        outline: none;
-        transition: all ease-in 0.1s;
-        font-size: 18px;
-        box-shadow: 0 0 2px #A5A8AD;
-  }
-  .form___inputs > input:hover{
-    transform: scale(103%);
-  }
-
-  .form___button{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    justify-content: start;
-    align-items: center;   
-    flex-direction: column;
-    gap: 30px;
-   }
-
-
-    
-   .form___button > button{
-    width: 70%;
-height: 23%;
-outline: none;
-border:1px solid #94BBF6;
-background-color: #94BBF6;
-border-radius: 10px;
-font-size: 22px;
-color: #fff;
-font-weight: bold;
-box-shadow:0 0 20px #D3E2F6;
-transition: all ease-in-out 0.2s;
-cursor: pointer;
-
-position: relative;
-bottom: 20px;
-
-
-   }
-
-   .form___button > button:last-child {
-    background-color: #fff;
-    color: #94BBF6;
-   }
-
-.forms___resgister{
-    width: 100%;
-    height: 100%;
+    height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.register___form > h1 {
+    font-size: 2.5rem;
+    color: #9AC1FA;
+  
+}
+.register___form{
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    gap: 10%;
 }
 
 
+
+.login___title{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.login___form{
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10%;
+}
+
+ .login___form > h1 {
+    font-size: 2.5rem;
+    color: #96C2FD;
+    
+ }
+
+.form___items {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
   
+
+   
+}
+.form___items > input {
+    width: 35%;
+    height: 5%;
+    position: absolute;
+    font-size: 22px;
+    outline: none;
+    border: 1px solid  #000000;
+    border-radius: 8px;
+    background-color: transparent;
+    z-index: 111;    
+    transition: all ease-in 0.1s;
+    font-style: italic;
+    padding:3px 0 2px 2%;
+}
+
+.form___buttons{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+    flex-direction: column;
+
+}
+
+.labelline{
+    position: absolute;
+     align-self: flex-start;
+    font-style: italic;
+    font-size: 25px;
+    padding: 0 10px;
+    margin: 0 20px;
+    background-color: #fff;
+    opacity: 0.7;
+
+}
+
+.focus {
+    color: #94BBF6;
+    height: 30px;
+    line-height: 30px;
+    transform: translateY(-27px)  scale(0.78) ;
+    z-index: 1111;
+    opacity: 1;
+}
+
+.input_focus {
+    border: 2px solid #749DDE;
+    transform: scale(102%);
+}
+
+.button___button-login:hover{
+transform: scale(105%);
+background-color: #fff;
+color: #96C2FD;
+}
+
+
+.button___button-register:hover{
+    transform: scale(105%);
+    background-color: #96BDF9;
+    color: #fff;
+    }
+
+.button___button-register{
+    width: 70%;
+    height: 60%;
+    background-color: #fff;
+    border: 1px solid #96C2FD;
+    border-radius: 15px;
+    color: #749DDE;
+    font-size: 30px;
+    transition: all ease-in 0.1s;
+    cursor: pointer;
+    align-self: center;
+}
+
+.button___button-login{
+    width: 70%;
+    height:  60%;
+    background-color: #96C2FD;
+    border: 1px solid #96C2FD;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 30px;
+    transition: all ease-in 0.1s;
+    cursor: pointer;
+    align-self: center;
+}
+
+.form___items > input:focus{
+    border: 2px solid #749DDE;
+    transform: scale(102%);
+  
+}
+
+.form___items > input:focus + .labelline{
+  color: #94BBF6;
+  height: 30px;
+  line-height: 30px;
+  transform: translateY(-27px)  scale(0.78) ;
+  z-index: 1111;
+  opacity: 1;
+  
+}
+
+
+
 .form___add-task{  
     width: 90%;
     height: 600px;
@@ -770,4 +856,7 @@ align-self: flex-start;
       height: 100vh; /* Asegura que ocupe toda la pantalla vertical */
       padding: 1rem;
       box-sizing: border-box;
-    }   }
+      border-radius: 0px;
+    }   
+
+}

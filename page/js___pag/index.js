@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const butonIniciarApp = document.getElementById("button-Init-App");
     const initContainer = document.getElementById("init");
-    const containerPage = document.querySelector(".container___page");
+    const containerPage = document.getElementById("page");
     const formAddTask = document.querySelector(".form___add-task");
     const buttonAñadirTarea = document.getElementById("add-task"); 
     const parrafoCuandoNoHayTareas = document.getElementById("p-no-task");
@@ -9,21 +9,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const listaDeTareas = document.querySelector(".list-task");
     const inputAAñadirTarea = document.getElementById("tarea");
     const buttonConfirmarTarea = document.getElementById("add");
-        const formRegister = document.querySelector(".forms___resgister");
-   const formLogin = document.querySelector(".forms___login");
-    const buttonLogin = document.getElementById("login");
-    const buttonCrearCuenta = document.getElementById("createAcount");
+  const containerLogin  = document.querySelector(".container___login");
+const containerRegister = document.querySelector(".container___register");  
+    
 
+  
 
-    buttonCrearCuenta.addEventListener("click", () => {
-       formLogin.classList.add("remove");
-        formRegister.classList.remove("remove");
+ // remove paginas
+ containerRegister.classList.add("remove")
+ containerLogin.classList.add("remove")
+ containerPage.classList.add("remove");
 
-    });
-
-    initContainer.classList.add("remove");
-     formRegister.classList.add("remove")
-    containerPage.classList.add("remove");
+  
+     
+   
     formAddTask.classList.add("remove");
 
     butonIniciarApp.addEventListener("click", () => {
@@ -51,8 +50,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById("overlay").classList.remove("show");
         formAddTask.classList.add("remove");
     });
-});
 
+    const inputs = document.querySelectorAll(".items___inputs");
+  
+
+    inputs.forEach(input => {
+        input.addEventListener("input", () => {
+            const labelline = input.nextElementSibling;
+            if (input.value.trim() !== "") {
+                labelline.classList.add("focus");
+                input.classList.add("input_focus");
+            } else {
+                labelline.classList.remove("focus");
+            }
+        });
+    });
+
+});
 function agregarTarea(textoTarea, lista) {
     const li = document.createElement("li");
     li.classList.add("task");
@@ -128,3 +142,4 @@ function actualizarTitleTareas(cantidadDeTareas){
     titleCantidadDeTareas.textContent = `You have ${cantidadDeTareas} task today`
 
 }
+
