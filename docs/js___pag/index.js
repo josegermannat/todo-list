@@ -59,11 +59,17 @@ const buttonRegister2 = document.getElementById("button-register2");
     });
 
     buttonConfirmarTarea.addEventListener("click", () => {
-        parrafoCuandoNoHayTareas.classList.add("remove");
+  
         if (inputAAñadirTarea.value.trim() !== "") {
             agregarTarea(inputAAñadirTarea.value, listaDeTareas);
             inputAAñadirTarea.value = ""; 
-            
+
+               }
+           if(listaDeTareas.children.length >= 1){
+            parrafoCuandoNoHayTareas.classList.add("remove");
+           } else if (listaDeTareas.children.length === 0){
+            parrafoCuandoNoHayTareas.classList.remove("remove");
+           
         }
         document.getElementById("overlay").classList.remove("show");
         formAddTask.classList.add("remove");
