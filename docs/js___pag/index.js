@@ -11,23 +11,40 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const buttonConfirmarTarea = document.getElementById("add");
   const containerLogin  = document.querySelector(".container___login");
 const containerRegister = document.querySelector(".container___register");  
-    
-
-  
+const buttonRegister = document.getElementById("button-register");
+const buttonRegister2 = document.getElementById("button-register2");
 
  // remove paginas
  containerRegister.classList.add("remove")
  containerLogin.classList.add("remove")
  containerPage.classList.add("remove");
 
-  
-     
+
+ 
    
     formAddTask.classList.add("remove");
 
     butonIniciarApp.addEventListener("click", () => {
         initContainer.classList.add("remove");
+    containerLogin.classList.remove("remove")
+    });
+
+    const buttonLogin = document.getElementById("button-login");
+
+    buttonLogin.addEventListener("click", () => {
+        containerLogin.classList.add("remove");
         containerPage.classList.remove("remove");
+       
+    });
+
+    buttonRegister.addEventListener("click", () => {
+        containerLogin.classList.add("remove");
+        containerRegister.classList.remove("remove");
+    });
+
+    buttonRegister2.addEventListener("click", () => {
+        containerRegister.classList.add("remove");
+        containerLogin.classList.remove("remove");
     });
 
     buttonAñadirTarea.addEventListener("click", () => {
@@ -42,6 +59,7 @@ const containerRegister = document.querySelector(".container___register");
     });
 
     buttonConfirmarTarea.addEventListener("click", () => {
+        parrafoCuandoNoHayTareas.classList.add("remove");
         if (inputAAñadirTarea.value.trim() !== "") {
             agregarTarea(inputAAñadirTarea.value, listaDeTareas);
             inputAAñadirTarea.value = ""; 

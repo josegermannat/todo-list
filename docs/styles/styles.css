@@ -850,7 +850,9 @@ align-self: flex-start;
         min-height: 100vh;
     }
     .container___init,
-    .container___page {
+    .container___page,
+    .container___login,
+    .container___register{
       width: 100%; /* Ajusta el ancho al 90% del viewport */
       height: auto; /* Deja que la altura se ajuste automáticamente */
       height: 100vh; /* Asegura que ocupe toda la pantalla vertical */
@@ -858,5 +860,10 @@ align-self: flex-start;
       box-sizing: border-box;
       border-radius: 0px;
     }   
+
+    .form___items > input {
+        width: 80%;
+      
+    }
 
 }
