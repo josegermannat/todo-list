@@ -13,15 +13,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
 const containerRegister = document.querySelector(".container___register");  
 const buttonRegister = document.getElementById("button-register");
 const buttonRegister2 = document.getElementById("button-register2");
+const suscessful =  document.getElementById("successful");
+const volver = document.getElementById("back");
 
- // remove paginas
- containerRegister.classList.add("remove")
+
+
+
+
+ // remover paginas
+ containerRegister.classList.add("remove");
  containerLogin.classList.add("remove")
  containerPage.classList.add("remove");
 
 
+ suscessful.classList.add("remove");
+
+
  
-   
+
     formAddTask.classList.add("remove");
 
     butonIniciarApp.addEventListener("click", () => {
@@ -31,21 +40,87 @@ const buttonRegister2 = document.getElementById("button-register2");
 
     const buttonLogin = document.getElementById("button-login");
 
-    buttonLogin.addEventListener("click", () => {
-        containerLogin.classList.add("remove");
-        containerPage.classList.remove("remove");
+    buttonLogin.addEventListener("click", async () => {
+
+
+
+        const user = {
+            email: document.getElementById("email1").value,
+            password: document.getElementById("password").value,
+          }
+
+          
+  await manejarInicioDeSesion(user);
+
+
+
+
+
        
     });
 
     buttonRegister.addEventListener("click", () => {
         containerLogin.classList.add("remove");
         containerRegister.classList.remove("remove");
+   
     });
+   
+ 
+
+
 
     buttonRegister2.addEventListener("click", () => {
-        containerRegister.classList.add("remove");
-        containerLogin.classList.remove("remove");
+        const user = {
+            nombre: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password2").value,
+          }
+
+          const registerForm =    document.getElementById("register");
+          registerForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+        let nombre = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password2").value.trim();
+        
+        if (!nombre || !email || !password) {
+          alert("Todos los campos son obligatorios.");
+          event.preventDefault();
+          return;
+        }
+    
+        if (!email.includes("@")) {
+          alert("Ingresa un correo válido.");
+          event.preventDefault();
+          return;
+        }
+    
+        if (password.length < 6) {
+          alert("La contraseña debe tener al menos 6 caracteres.");
+          event.preventDefault();
+          return;
+        } 
+        
+        crearUsuario(user)
+
+        document.getElementById("register").classList.add("remove");
+        suscessful.classList.remove("remove");
+          
+          volver.addEventListener("click", () => {
+            suscessful.classList.add("remove");
+            containerLogin.classList.remove("remove");
+            containerRegister.classList.add("remove");
+  
+  
+        
+      });
+
+    
+          
+         
     });
+});
+
 
     buttonAñadirTarea.addEventListener("click", () => {
         document.getElementById("overlay").classList.add("show");
@@ -90,7 +165,13 @@ const buttonRegister2 = document.getElementById("button-register2");
         });
     });
 
+
+   
+
+
+
 });
+
 function agregarTarea(textoTarea, lista) {
     const li = document.createElement("li");
     li.classList.add("task");
@@ -167,3 +248,69 @@ function actualizarTitleTareas(cantidadDeTareas){
 
 }
 
+
+   
+  
+function crearUsuario(usuario) {
+      
+
+
+    fetch('http://localhost:3002/register', {
+
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(usuario)
+    }) .then(res => res.json())
+    .then(result => {
+        console.log('datos enviados al servidor' ,result);
+    })
+    .catch(err => {
+        console.log('error al enviar los datos', err);
+    });
+   
+    }
+
+
+    async function valdiarInicioDeSesion(usuario) {
+        try {
+            const response = await fetch('http://localhost:3002/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(usuario)
+            });
+            
+            const data = await response.json(); 
+    
+            if (data.valid) {
+                console.log('Inicio de sesión exitoso:', data.user);
+                return true; 
+            } else {
+                console.log('Credenciales incorrectas:', data.mensaje);
+                return false;  
+            }
+    
+        } catch (err) {
+            console.log('Error al enviar los datos', err);
+            return false; 
+        }
+    }
+    
+
+    async function manejarInicioDeSesion(usuario) {
+        const containerPage = document.getElementById("page");
+        const containerLogin  = document.querySelector(".container___login");
+        if (await valdiarInicioDeSesion(usuario)) {
+            containerPage.classList.remove("remove");
+            containerLogin.classList.add("remove");
+        } else {
+            console.log("No se pudo iniciar sesión.");
+            alert("Credenciales incorrectas.");
+        }
+    }
+    
+
+    

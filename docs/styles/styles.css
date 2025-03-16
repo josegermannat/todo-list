@@ -444,6 +444,8 @@ border-radius: 30px;
     height: 80%;
     overflow: hidden;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     background-color: #fff;
     border: 1px solid transparent;
@@ -671,9 +673,7 @@ align-self: flex-start;
     transform: scale(103%);
 }
 
-.remove{
-    display: none;
-}
+
 
 .button-añadir{
     width: 80%;
@@ -867,3 +867,94 @@ align-self: flex-start;
     }
 
 }
+
+  .register___successful{
+
+    width: 80%;
+    height:55%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #749DDE;
+    padding: 15px 15px;
+    animation: smoothSlideUp 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+   z-index: 999;
+    
+  }  
+
+  .successful___title{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.successful___title > h1{
+    font-size: 30px;
+    color: #749DDE;
+    font-weight: bold;
+    text-shadow:0 0 15px #D3E2F6; 
+    text-align: center;
+     }
+  .successful___container-image{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .successful___button{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .successful___button > button{
+    width: 70%;
+    height: 60%;
+    background-color: #94BBF6;
+    border: 1px solid #94BBF6;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 25px;
+  
+    cursor: pointer;
+    transition: all ease-in 0.1s;
+  }
+
+  .successful___button > button:hover{
+    transform: scale(103%);
+    background-color: #fff;
+    color: #94BBF6;
+  }
+ .remove{
+    display: none;
+ }  
+
+
+ @keyframes smoothSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(-5px) scale(1.02);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+
+  .opacity  {
+opacity: 0.5;
+   }
