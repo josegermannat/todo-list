@@ -1,8 +1,11 @@
 
-
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
 const app = express();
 const port = 3002;
 
@@ -29,14 +32,27 @@ app.use(cors());
 
 app.use(express.json());
 
-app.post('/register', async (req, res) => {
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+      cb(null, 'uploads/');  // Ruta donde se guardarán los archivos
+  },
+  filename: (req, file, cb) => {
+      cb(null, Date.now() + path.extname(file.originalname));  // Nombre único para el archivo
+  }
+});
+
+const upload = multer({ storage: storage });
+app.post('/register',  upload.single('imgProfile'), async (req, res) => {
   console.log(req.body);
+  
  try {
-    const { nombre, email, password } = req.body;
-    
+  
+    const { nombre, email, password} = req.body;
+    const imgProfile = req.file ? `/uploads/${req.file.filename}` : null;
      const resultUser =  await pool.query(
-      'INSERT INTO public.usuarios (usuario, email, contraseña) VALUES ($1, $2, $3) RETURNING *',
-      [nombre, email, password],
+      'INSERT INTO public.usuarios (usuario, email, contraseña,imgprofile) VALUES ($1, $2, $3, $4) RETURNING *',
+      [nombre, email, password,imgProfile],
      
     );
     res.status(200).json({
@@ -81,6 +97,7 @@ app.post('/register', async (req, res) => {
       });
     }
   });
+  app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
     

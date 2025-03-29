@@ -20,10 +20,13 @@ const volver = document.getElementById("back");
 
 
 
+
+
  // remover paginas
+
  containerRegister.classList.add("remove");
  containerLogin.classList.add("remove")
- containerPage.classList.add("remove");
+containerPage.classList.add("remove")
 
 
  suscessful.classList.add("remove");
@@ -62,6 +65,9 @@ const volver = document.getElementById("back");
     buttonRegister.addEventListener("click", () => {
         containerLogin.classList.add("remove");
         containerRegister.classList.remove("remove");
+        
+        document.getElementById("register").classList.remove("remove");
+        
    
     });
    
@@ -70,11 +76,11 @@ const volver = document.getElementById("back");
 
 
     buttonRegister2.addEventListener("click", () => {
-        const user = {
-            nombre: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            password: document.getElementById("password2").value,
-          }
+        const formData = new FormData(); 
+        formData.append('nombre', document.getElementById("name").value);  // Asegúrate de que esto tenga valor
+formData.append('email', document.getElementById("email").value);
+formData.append('password', document.getElementById("password2").value);
+formData.append('imgProfile', document.getElementById('file-upload').files[0]);
 
           const registerForm =    document.getElementById("register");
           registerForm.addEventListener("submit", function(event) {
@@ -100,12 +106,12 @@ const volver = document.getElementById("back");
           event.preventDefault();
           return;
         } 
-        
-        crearUsuario(user)
 
-        document.getElementById("register").classList.add("remove");
-        suscessful.classList.remove("remove");
-          
+ 
+         if (crearUsuario(formData)) {
+            document.getElementById("register").classList.add("remove");
+            suscessful.classList.remove("remove");
+         }
           volver.addEventListener("click", () => {
             suscessful.classList.add("remove");
             containerLogin.classList.remove("remove");
@@ -172,6 +178,54 @@ const volver = document.getElementById("back");
 
 });
 
+
+
+function previewImage(event, selector) {
+    
+    console.log(event);
+    const input = event.target;
+    const imgPreview = document.querySelector(selector);
+  
+    if (!input.files.length) return;
+  
+    const file = input.files[0];
+    const objectURL = URL.createObjectURL(file);
+  
+    imgPreview.src = objectURL;
+    imgPreview.classList.remove("remove");
+  
+    
+    document.getElementById('label-file').classList.add('remove');
+  
+    const contenedorDePhoto = document.getElementById("change-photo");
+  
+    // Verifica si ya existe un botón para cambiar la foto
+    let buttonCambiarPhoto = document.querySelector('.button-change-photo');
+  
+    if (!buttonCambiarPhoto) {
+        buttonCambiarPhoto = document.createElement("button");
+        buttonCambiarPhoto.innerHTML = "Cambiar Foto";
+        buttonCambiarPhoto.classList.add("button-change-photo");
+        contenedorDePhoto.appendChild(buttonCambiarPhoto);
+  
+        buttonCambiarPhoto.addEventListener("click", () => {
+            const labelFile = document.getElementById('label-file');
+            URL.revokeObjectURL(imgPreview.src); // Revoca el objeto antes de limpiarlo
+            imgPreview.src = "";
+            input.value = "";
+            imgPreview.classList.add("remove");
+            labelFile.classList.remove('remove');
+  
+            // Elimina el botón completamente
+            buttonCambiarPhoto.remove();
+        });
+    }
+  
+  return input.value
+}
+
+  
+  
 function agregarTarea(textoTarea, lista) {
     const li = document.createElement("li");
     li.classList.add("task");
@@ -258,18 +312,22 @@ function crearUsuario(usuario) {
     fetch('http://localhost:3002/register', {
 
         method: 'POST',
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(usuario)
+        
+        body: usuario
     }) .then(res => res.json())
     .then(result => {
         console.log('datos enviados al servidor' ,result);
+        return true
     })
     .catch(err => {
         console.log('error al enviar los datos', err);
     });
    
+    }
+
+    function actualizarImagenDePerfil(imagen) {
+        const imgElement = document.getElementById('imgPreview2');  // Elemento de imagen en el HTML
+        imgElement.src = `http://localhost:3002${imagen}`;  // Crear la URL completa
     }
 
 
@@ -278,32 +336,52 @@ function crearUsuario(usuario) {
             const response = await fetch('http://localhost:3002/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(usuario)
+                body: JSON.stringify(usuario),
             });
-            
-            const data = await response.json(); 
+    
+            const data = await response.json();
+            console.log(data); // Imprime toda la respuesta para verificar que el campo imgProfile existe
     
             if (data.valid) {
                 console.log('Inicio de sesión exitoso:', data.user);
-                return true; 
+                return {
+                    boolean: true,
+                    data: data, // Pasa solo el objeto user
+                };
             } else {
                 console.log('Credenciales incorrectas:', data.mensaje);
-                return false;  
+                return {
+                    boolean: false,
+                    data: null
+                };
             }
     
         } catch (err) {
             console.log('Error al enviar los datos', err);
-            return false; 
+            return {
+                boolean: false,
+                data: null
+            };
         }
     }
-    
 
     async function manejarInicioDeSesion(usuario) {
         const containerPage = document.getElementById("page");
         const containerLogin  = document.querySelector(".container___login");
-        if (await valdiarInicioDeSesion(usuario)) {
+        const resultado = await valdiarInicioDeSesion(usuario);
+    
+        if (resultado.boolean) {
+            const imgUrl = resultado.data.user.imgprofile;
+            console.log('URL de imagen:', imgUrl); // Verifica que imgUrl no sea undefined
+    
+            if (imgUrl) {
+                actualizarImagenDePerfil(imgUrl);
+            } else {
+                console.log('No hay imagen de perfil disponible');
+            }
+    
             containerPage.classList.remove("remove");
             containerLogin.classList.add("remove");
         } else {
@@ -312,5 +390,4 @@ function crearUsuario(usuario) {
         }
     }
     
-
     

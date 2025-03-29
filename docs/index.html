@@ -33,6 +33,7 @@
                 </div>
                 <div class="init___button">
                     <button id="button-Init-App" class="button___button-start"   type="button">Get Started</button>
+                   
                 </div>
             </div>
        
@@ -87,7 +88,18 @@
                             <input class="items___inputs" id="password2" type="password">
                             <div class="labelline">Elige tu contraseña</div>
                         </div>
+                           <div class="form___items">
+                            <label id="label-file" for="file-upload" class="items-label"><i class="fa-solid fa-camera"></i>Ingresa tu foto de perfil</label>
+                            <img id="imgPreview" class="remove" src="" alt="">
+                            <div id="change-photo">
+
+                                
+                            </div>
+                            <input type="file" class="items___inputs-file" id="file-upload"    onchange="previewImage(event, '#imgPreview')">
+                        </div>
+
                         <div class="form___buttons">
+
                             <button id="button-register2" type="submit" class="button___button-register">Register</button>
                           
                         </div>
@@ -121,8 +133,22 @@
           <div id="page" class="container___page">
             <div id="overlay"></div>
             <div class="contaiener___nav">
-                <button type="button" class="menu"> <i class="fa-solid fa-bars"></i></i></button>
-                <h1 id="User-Page"></h1>
+                <div class="nav___container-menu">
+
+                    <button type="button" class="menu"> <i class="fa-solid fa-bars"></i></i></button>
+
+                </div>
+               <div class="nav___container-user">
+
+                <h1 id="User-Page">Welcome to doingly</h1>
+
+               </div>
+               
+                <div class="nav___container-image">
+
+                    <img src=""  id="imgPreview2" alt="">
+
+                </div>
             </div>
              <div class="wrapper___mensaje">
                 <div class="mensaje___container">
