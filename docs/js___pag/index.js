@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const containerLogin  = document.querySelector(".container___login");
 const containerRegister = document.querySelector(".container___register");  
 const buttonRegister = document.getElementById("button-register");
-const buttonRegister2 = document.getElementById("button-register2");
+
 const suscessful =  document.getElementById("successful");
-const volver = document.getElementById("back");
+
 
 
 
@@ -29,7 +29,7 @@ const volver = document.getElementById("back");
 containerPage.classList.add("remove")
 
 
- suscessful.classList.add("remove");
+suscessful.classList.add('remove')
 
 
  
@@ -75,58 +75,63 @@ containerPage.classList.add("remove")
 
 
 
-    buttonRegister2.addEventListener("click", () => {
-        const formData = new FormData(); 
-        formData.append('nombre', document.getElementById("name").value);  // Asegúrate de que esto tenga valor
-formData.append('email', document.getElementById("email").value);
-formData.append('password', document.getElementById("password2").value);
-formData.append('imgProfile', document.getElementById('file-upload').files[0]);
-
-          const registerForm =    document.getElementById("register");
-          registerForm.addEventListener("submit", function(event) {
-            event.preventDefault();
+    document.getElementById('button-register2').addEventListener('click', (event) => {
+        event.preventDefault(event); // Evita el envío automático
+    
         let nombre = document.getElementById("name").value.trim();
         let email = document.getElementById("email").value.trim();
         let password = document.getElementById("password2").value.trim();
         
         if (!nombre || !email || !password) {
-          alert("Todos los campos son obligatorios.");
-          event.preventDefault();
-          return;
+            alert("Todos los campos son obligatorios.");
+           
+            return;
         }
     
         if (!email.includes("@")) {
-          alert("Ingresa un correo válido.");
-          event.preventDefault();
-          return;
+            alert("Ingresa un correo válido.");
+          
+            return;
         }
     
         if (password.length < 6) {
-          alert("La contraseña debe tener al menos 6 caracteres.");
-          event.preventDefault();
-          return;
+            alert("La contraseña debe tener al menos 6 caracteres.");
+            
+            return;
         } 
+    
+        // Crear FormData después de validar
+        const formData = new FormData();
+        formData.append('nombre', nombre);
+        formData.append('email', email);
+        formData.append('password', password);
+        formData.append('imgProfile', document.getElementById('file-upload').files[0]);
+      
+        // Intentamos registrar el usuario
+        crearUsuario(formData)
+            .then((exito) => {
+                if (exito) {
+                   
+                    document.getElementById("register").classList.add("remove");
+                   document.getElementById('successful').classList.remove("remove");
+                }
+            })
+            .catch((error) => {
+                console.error("Error al registrar el usuario:", error);
+            });
 
- 
-         if (crearUsuario(formData)) {
-            document.getElementById("register").classList.add("remove");
-            suscessful.classList.remove("remove");
-         }
-          volver.addEventListener("click", () => {
-            suscessful.classList.add("remove");
-            containerLogin.classList.remove("remove");
-            containerRegister.classList.add("remove");
-  
-  
-        
-      });
+   
+    });
+    const volver = document.getElementById("back");
+
+    volver.addEventListener("click", () => {
+        suscessful.classList.add("remove");
+        containerLogin.classList.remove("remove");
+        containerRegister.classList.add("remove");
+
 
     
-          
-         
-    });
-});
-
+  });
 
     buttonAñadirTarea.addEventListener("click", () => {
         document.getElementById("overlay").classList.add("show");
@@ -304,26 +309,21 @@ function actualizarTitleTareas(cantidadDeTareas){
 
 
    
-  
-function crearUsuario(usuario) {
-      
+async function crearUsuario(usuario) {
+    try {
+        const response = await fetch('http://localhost:3002/register', {
+            method: 'POST',
+            body: usuario
+        });
 
-
-    fetch('http://localhost:3002/register', {
-
-        method: 'POST',
-        
-        body: usuario
-    }) .then(res => res.json())
-    .then(result => {
-        console.log('datos enviados al servidor' ,result);
-        return true
-    })
-    .catch(err => {
-        console.log('error al enviar los datos', err);
-    });
-   
+        const result = await response.json();
+        console.log('Datos enviados al servidor', result);
+        return true;
+    } catch (err) {
+        console.log('Error al enviar los datos', err);
+        return false;
     }
+}
 
     function actualizarImagenDePerfil(imagen) {
         const imgElement = document.getElementById('imgPreview2');  // Elemento de imagen en el HTML
@@ -380,6 +380,7 @@ function crearUsuario(usuario) {
                 actualizarImagenDePerfil(imgUrl);
             } else {
                 console.log('No hay imagen de perfil disponible');
+                document.getElementById('imgPreview2').src = 'images/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg' 
             }
     
             containerPage.classList.remove("remove");
